@@ -9,6 +9,8 @@
 - 在游戏页面中显示可拖拽书签面板
 - 支持主分类和副本分类
 - 支持添加、编辑、删除书签
+- 支持为单个书签设置按键或鼠标映射
+- 支持按键映射总开关，默认关闭
 - 支持透明度和待机时间调节
 - 支持贴边吸附和自动休眠
 - 休眠后可通过鼠标悬停唤醒
@@ -17,7 +19,7 @@
 ### 安装
 
 1. 安装 Tampermonkey / 油猴扩展。
-2. 打开 `gbf-web-bookmark-plugin-v6.2.9.user.js`。
+2. 打开 `gbf-web-bookmark-plugin-v7.1.user.js`。
 3. 将脚本内容复制到 Tampermonkey 新脚本中保存。
 4. 刷新 GBF 网页。
 
@@ -26,7 +28,8 @@
 - 左键拖拽面板内大部分区域可以移动面板。
 - 左键点击标题 `GBF Tools` 可以开启或关闭待机模式。
 - 右键点击标题可以打开设置面板。
-- 右键点击书签可以编辑或删除。
+- 右键点击书签可以编辑、删除，或设置按键映射。
+- 右键标题设置中可开启按键映射功能；未开启时不会响应映射。
 - 将面板拖到浏览器边界附近会自动吸附。
 
 ## English
@@ -38,6 +41,8 @@ This is a Tampermonkey userscript that adds a draggable bookmark panel to the we
 - Draggable bookmark panel inside the game page
 - Main and raid bookmark categories
 - Add, edit, and delete bookmarks
+- Assign keyboard or mouse bindings to individual bookmarks
+- Optional global shortcut toggle, off by default
 - Opacity and idle timer settings
 - Edge docking and auto-idle mode
 - Wake from idle by hovering the mouse
@@ -46,7 +51,7 @@ This is a Tampermonkey userscript that adds a draggable bookmark panel to the we
 ### Installation
 
 1. Install the Tampermonkey browser extension.
-2. Open `gbf-web-bookmark-plugin-v6.2.9.user.js`.
+2. Open `gbf-web-bookmark-plugin-v7.1.user.js`.
 3. Copy the script into a new Tampermonkey script and save it.
 4. Refresh the GBF web page.
 
@@ -55,7 +60,8 @@ This is a Tampermonkey userscript that adds a draggable bookmark panel to the we
 - Drag most areas of the panel with the left mouse button to move it.
 - Left-click the `GBF Tools` title to enable or disable idle mode.
 - Right-click the title to open settings.
-- Right-click a bookmark to edit or delete it.
+- Right-click a bookmark to edit, delete, or assign a binding.
+- Enable bookmark bindings from the title settings panel; it stays off by default.
 - Drag the panel near a browser edge to dock it.
 
 ## 日本語
@@ -67,6 +73,8 @@ This is a Tampermonkey userscript that adds a draggable bookmark panel to the we
 - ゲーム画面内にドラッグ可能なブックマークパネルを表示
 - メイン用とクエスト用の分類に対応
 - ブックマークの追加、編集、削除
+- 個別ブックマークにキーやマウスの割り当てを設定
+- 割り当て機能の全体オン/オフ切り替え、初期はオフ
 - 透明度と待機時間の調整
 - 画面端への吸着と自動待機モード
 - マウスホバーで待機状態から復帰
@@ -75,7 +83,7 @@ This is a Tampermonkey userscript that adds a draggable bookmark panel to the we
 ### インストール
 
 1. Tampermonkey 拡張機能をインストールします。
-2. `gbf-web-bookmark-plugin-v6.2.9.user.js` を開きます。
+2. `gbf-web-bookmark-plugin-v7.1.user.js` を開きます。
 3. スクリプト内容を Tampermonkey の新規スクリプトに貼り付けて保存します。
 4. GBF の Web ページを再読み込みします。
 
@@ -84,5 +92,6 @@ This is a Tampermonkey userscript that adds a draggable bookmark panel to the we
 - パネル内の多くの場所を左ドラッグすると、パネル全体を移動できます。
 - `GBF Tools` のタイトルを左クリックすると、待機モードを切り替えます。
 - タイトルを右クリックすると設定を開きます。
-- ブックマークを右クリックすると編集または削除できます。
+- ブックマークを右クリックすると編集、削除、割り当て設定ができます。
+- タイトルの設定から割り当て機能を有効化できます。初期状態では無効です。
 - パネルをブラウザ端へ近づけると吸着します。

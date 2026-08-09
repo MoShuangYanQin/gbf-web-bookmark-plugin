@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         GBF Panel Pro
 // @namespace    gbf.panel.pro
-// @version      6.2.9
+// @version      7.1
 // @match        *://steam.granbluefantasy.com/*
 // @match        *://gbf.game.mbga.jp/*
 // @match        *://game.granbluefantasy.jp/*
@@ -19,7 +19,8 @@
     docked: false, dockEdge: null,
     opacity: 100,
     idleSec: 5,
-    idleMode: false, idleActive: false
+    idleMode: false, idleActive: false,
+    keymapEnabled: false
   };
 
   let data = {
@@ -48,9 +49,23 @@
       const obj = JSON.parse(raw);
       if (obj.data)  data  = obj.data;
       if (obj.state) { Object.assign(state, obj.state); sanitizeState(); }
+      normalizeData();
     } catch {}
   }
-  function save() { localStorage.setItem(KEY, JSON.stringify({ data, state })); }
+  function save() {
+    normalizeData();
+    localStorage.setItem(KEY, JSON.stringify({ data, state }));
+  }
+
+  function normalizeData() {
+    ['main', 'raid'].forEach(listName => {
+      if (!Array.isArray(data[listName])) data[listName] = [];
+      data[listName].forEach(item => {
+        if (!item || typeof item !== 'object') return;
+        if (typeof item.keymap !== 'string') item.keymap = '';
+      });
+    });
+  }
 
   function sanitizeState() {
     const cw = document.documentElement.clientWidth;
@@ -227,7 +242,7 @@
     const list = data[state.activeList];
     const box  = el.querySelector('.menu');
     box.innerHTML = list.map((item, i) =>
-      `<div class="item" data-i="${i}">${item.name}</div>`).join('');
+      `<div class="item" data-i="${i}">${item.name}${item.keymap ? ` <span class="km-tag">${item.keymap}</span>` : ''}</div>`).join('');
 
     box.querySelectorAll('.item').forEach(dom => {
       const i = +dom.dataset.i;
@@ -282,16 +297,18 @@
   function showEditDialog(idx, panelEl) {
     const item = data[state.activeList][idx];
     showDialog({ title:'编辑书签', name:item.name, url:item.url,
-      onConfirm(n,u) { data[state.activeList][idx] = {name:n,url:u}; save(); render(panelEl); } });
+      keymap:item.keymap || '',
+      onConfirm(n,u,k) { data[state.activeList][idx] = {name:n,url:u,keymap:k}; save(); render(panelEl); } });
   }
   function showAddDialog(panelEl) {
     showDialog({ title:'添加书签',
       name: document.title || '',
       url:  location.hash  || location.href,
-      onConfirm(n,u) { data[state.activeList].push({name:n,url:u}); save(); render(panelEl); } });
+      keymap: '',
+      onConfirm(n,u,k) { data[state.activeList].push({name:n,url:u,keymap:k}); save(); render(panelEl); } });
   }
 
-  function showDialog({ title, name, url, onConfirm }) {
+  function showDialog({ title, name, url, keymap = '', onConfirm }) {
     removeDialog();
     const overlay = document.createElement('div');
     overlay.id = 'gbf-dialog-overlay';
@@ -316,6 +333,16 @@
             📋 读取当前页面
           </div>
         </div>
+        <div style="margin-bottom:12px;">
+          <div style="margin-bottom:4px;color:#aaa;font-size:11px;">按键映射</div>
+          <input id="gbf-d-key" type="text" value="${esc(keymap)}" readonly
+            placeholder="点击后按键"
+            style="width:74px;height:30px;box-sizing:border-box;padding:5px 7px;border:1px solid #555;
+            border-radius:4px;background:#1a1a1a;color:#fff;font-size:12px;cursor:pointer;text-align:center;">
+          <div id="gbf-d-key-clear" style="margin-top:4px;font-size:11px;color:#aaa;cursor:pointer;">
+            清空映射
+          </div>
+        </div>
         <div style="display:flex;gap:8px;justify-content:flex-end;">
           <button id="gbf-d-cancel" style="padding:5px 12px;border:1px solid #555;border-radius:4px;
             background:#333;color:#fff;cursor:pointer;font-size:12px;">取消</button>
@@ -326,18 +353,117 @@
     document.body.appendChild(overlay);
     const ni = overlay.querySelector('#gbf-d-name');
     const ui = overlay.querySelector('#gbf-d-url');
+    const ki = overlay.querySelector('#gbf-d-key');
+    const kc = overlay.querySelector('#gbf-d-key-clear');
+    let awaitingKey = false;
+    let keyValue = keymap || '';
     overlay.querySelector('#gbf-d-fill').onclick   = () => { ni.value = document.title||''; ui.value = location.hash||location.href; };
+    ki.onclick = () => {
+      awaitingKey = true;
+      ki.value = '等待输入...';
+      ki.style.color = '#00bfff';
+      ki.focus();
+    };
+    kc.onclick = () => {
+      keyValue = '';
+      ki.value = '';
+      ki.style.color = '#fff';
+      awaitingKey = false;
+    };
+    const capture = e => {
+      if (!awaitingKey) return;
+      e.preventDefault();
+      e.stopPropagation();
+      const text = describeBinding(e);
+      if (!text) return;
+      keyValue = text;
+      ki.value = text;
+      ki.style.color = '#fff';
+      awaitingKey = false;
+    };
+    overlay.addEventListener('keydown', capture, true);
+    overlay.addEventListener('keyup', capture, true);
+    overlay.addEventListener('mousedown', capture, true);
+    overlay.addEventListener('auxclick', capture, true);
     overlay.querySelector('#gbf-d-cancel').onclick = removeDialog;
     overlay.querySelector('#gbf-d-ok').onclick     = () => {
       const n=ni.value.trim(), u=ui.value.trim();
       if (!n||!u) return;
-      removeDialog(); onConfirm(n,u);
+      removeDialog(); onConfirm(n,u,keyValue.trim());
     };
     overlay.addEventListener('click', e => { if (e.target===overlay) removeDialog(); });
     ni.focus(); ni.select();
   }
   function removeDialog() { document.getElementById('gbf-dialog-overlay')?.remove(); }
   function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
+
+  function describeBinding(e) {
+    if (e.type === 'mousedown' || e.type === 'mouseup' || e.type === 'auxclick') return describeMouseButton(e.button);
+    const key = e.key;
+    const code = e.code || '';
+    const map = {
+      ArrowUp: '↑', ArrowDown: '↓', ArrowLeft: '←', ArrowRight: '→',
+      Escape: 'Esc', ' ': 'Space'
+    };
+    if (map[key]) return map[key];
+    if (/^Numpad/.test(code)) return describeNumpad(code);
+    if (/^Key[A-Z]$/.test(code)) return code.slice(3);
+    if (/^Digit[0-9]$/.test(code)) return code.slice(5);
+    if (/^F\d{1,2}$/.test(key)) return key;
+    if (key && key.length === 1) return key.toUpperCase();
+    return key || code || '';
+  }
+
+  function describeMouseButton(button) {
+    if (button === 0) return '鼠标左键';
+    if (button === 1) return '鼠标中键';
+    if (button === 2) return '鼠标右键';
+    if (button === 3) return '鼠标侧键1';
+    if (button === 4) return '鼠标侧键2';
+    return button >= 0 ? '鼠标键' + button : '';
+  }
+
+  function describeNumpad(code) {
+    const map = {
+      NumpadAdd: 'Num+',
+      NumpadSubtract: 'Num-',
+      NumpadMultiply: 'Num*',
+      NumpadDivide: 'Num/',
+      NumpadDecimal: 'Num.',
+      NumpadEnter: 'NumEnter'
+    };
+    return map[code] || ('Num' + code.replace('Numpad', ''));
+  }
+
+  function bindingTargetBlocked(target) {
+    return !!(target && target.closest && target.closest('input,button,select,textarea,#gbf-dialog-overlay,#gbf-ctx,.settings'));
+  }
+
+  function findBinding(text) {
+    if (!text) return null;
+    for (const listName of Object.keys(data)) {
+      const list = data[listName];
+      if (!Array.isArray(list)) continue;
+      for (const item of list) {
+        if (item && item.keymap === text && item.url) return item;
+      }
+    }
+    return null;
+  }
+
+  function bindShortcuts() {
+    document.addEventListener('keydown', e => {
+      if (!state.keymapEnabled || e.repeat || e.altKey || e.ctrlKey || e.metaKey || bindingTargetBlocked(e.target)) return;
+      const item = findBinding(describeBinding(e));
+      if (item) location.href = item.url;
+    }, false);
+
+    document.addEventListener('mouseup', e => {
+      if (!state.keymapEnabled || bindingTargetBlocked(e.target)) return;
+      const item = findBinding(describeBinding(e));
+      if (item) location.href = item.url;
+    }, false);
+  }
 
   /* ─── settings ──────────────────────────────────── */
   function toggleSettings(el) {
@@ -349,9 +475,14 @@
       <div class="row">透明度 <span id="opv">${state.opacity}</span>
         <input id="op" type="range" min="10" max="100" value="${state.opacity}"></div>
       <div class="row">待机 <span id="iv">${state.idleSec}</span>s
-        <input id="idle" type="range" min="1" max="15" value="${state.idleSec}"></div>`;
+        <input id="idle" type="range" min="1" max="15" value="${state.idleSec}"></div>
+      <label class="row keymap-toggle">
+        <input id="keymap-enabled" type="checkbox" ${state.keymapEnabled ? 'checked' : ''}>
+        <span>开启按键映射</span>
+      </label>`;
     box.querySelector('#op').oninput   = () => { state.opacity = +box.querySelector('#op').value;   box.querySelector('#opv').textContent=state.opacity;   setXY(el); save(); };
     box.querySelector('#idle').oninput = () => { state.idleSec = +box.querySelector('#idle').value; box.querySelector('#iv').textContent=state.idleSec; save(); };
+    box.querySelector('#keymap-enabled').onchange = () => { state.keymapEnabled = box.querySelector('#keymap-enabled').checked; save(); };
   }
 
   /* ─── create ────────────────────────────────────── */
@@ -544,6 +675,9 @@
 .settings:empty{display:none;}
 .row{margin:6px 0;font-size:11px;}
 .row input[type=range]{width:100%;margin-top:3px;}
+.keymap-toggle{display:flex;align-items:center;gap:6px;}
+.keymap-toggle input{margin:0;}
+.km-tag{font-size:10px;color:#9ad;opacity:.9;float:right;}
 #gbf-ctx .ctx-item{padding:6px 14px;cursor:pointer;}
 #gbf-ctx .ctx-item:hover{background:#444;}
 #gbf-ctx .ctx-del{color:#f88;}
@@ -615,6 +749,6 @@
     document.head.appendChild(s);
   }
 
-  function init() { load(); style(); create(); }
+  function init() { load(); style(); bindShortcuts(); create(); }
   init();
 })();
