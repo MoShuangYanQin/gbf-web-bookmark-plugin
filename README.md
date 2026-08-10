@@ -10,6 +10,7 @@
 - 支持主分类和副本分类
 - 支持添加、编辑、删除书签
 - 支持为单个书签设置按键或鼠标映射
+- 鼠标映射支持左键、中键、右键和侧键 1-7
 - 支持按键映射总开关，默认关闭
 - 支持透明度和待机时间调节
 - 支持贴边吸附和自动休眠
@@ -19,9 +20,11 @@
 ### 安装
 
 1. 安装 Tampermonkey / 油猴扩展。
-2. 打开 `gbf-web-bookmark-plugin-v7.1.user.js`。
-3. 将脚本内容复制到 Tampermonkey 新脚本中保存。
+2. 打开快速安装链接：`https://raw.githubusercontent.com/MoShuangYanQin/gbf-web-bookmark-plugin/main/gbf-web-bookmark-plugin-v7.1.7.user.js`。
+3. 在 Tampermonkey / 油猴安装页确认安装。
 4. 刷新 GBF 网页。
+
+也可以打开 `gbf-web-bookmark-plugin-v7.1.7.user.js`，将脚本内容复制到 Tampermonkey 新脚本中保存。
 
 ### 使用
 
@@ -42,6 +45,7 @@ This is a Tampermonkey userscript that adds a draggable bookmark panel to the we
 - Main and raid bookmark categories
 - Add, edit, and delete bookmarks
 - Assign keyboard or mouse bindings to individual bookmarks
+- Mouse bindings support left, middle, right, and side buttons 1-7
 - Optional global shortcut toggle, off by default
 - Opacity and idle timer settings
 - Edge docking and auto-idle mode
@@ -51,9 +55,11 @@ This is a Tampermonkey userscript that adds a draggable bookmark panel to the we
 ### Installation
 
 1. Install the Tampermonkey browser extension.
-2. Open `gbf-web-bookmark-plugin-v7.1.user.js`.
-3. Copy the script into a new Tampermonkey script and save it.
+2. Open the quick install link: `https://raw.githubusercontent.com/MoShuangYanQin/gbf-web-bookmark-plugin/main/gbf-web-bookmark-plugin-v7.1.7.user.js`.
+3. Confirm installation in Tampermonkey.
 4. Refresh the GBF web page.
+
+You can also open `gbf-web-bookmark-plugin-v7.1.7.user.js`, copy the script into a new Tampermonkey script, and save it.
 
 ### Usage
 
@@ -74,6 +80,7 @@ This is a Tampermonkey userscript that adds a draggable bookmark panel to the we
 - メイン用とクエスト用の分類に対応
 - ブックマークの追加、編集、削除
 - 個別ブックマークにキーやマウスの割り当てを設定
+- マウス割り当ては左、中、右クリックとサイドボタン 1-7 に対応
 - 割り当て機能の全体オン/オフ切り替え、初期はオフ
 - 透明度と待機時間の調整
 - 画面端への吸着と自動待機モード
@@ -83,9 +90,11 @@ This is a Tampermonkey userscript that adds a draggable bookmark panel to the we
 ### インストール
 
 1. Tampermonkey 拡張機能をインストールします。
-2. `gbf-web-bookmark-plugin-v7.1.user.js` を開きます。
-3. スクリプト内容を Tampermonkey の新規スクリプトに貼り付けて保存します。
+2. クイックインストールリンクを開きます: `https://raw.githubusercontent.com/MoShuangYanQin/gbf-web-bookmark-plugin/main/gbf-web-bookmark-plugin-v7.1.7.user.js`
+3. Tampermonkey のインストール画面で確認します。
 4. GBF の Web ページを再読み込みします。
+
+または `gbf-web-bookmark-plugin-v7.1.7.user.js` を開き、スクリプト内容を Tampermonkey の新規スクリプトに貼り付けて保存します。
 
 ### 使い方
 
