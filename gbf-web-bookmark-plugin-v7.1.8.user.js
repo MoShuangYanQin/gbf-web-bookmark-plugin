@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         GBF Panel Pro
 // @namespace    gbf.panel.pro
-// @version      7.1.7
+// @version      7.1.8
 // @match        *://steam.granbluefantasy.com/*
 // @match        *://gbf.game.mbga.jp/*
 // @match        *://game.granbluefantasy.jp/*
@@ -651,38 +651,38 @@
   /* 只对 width/height/border-radius/box-shadow 加过渡，transform 不加（防拖动惯性） */
   transition:width .3s ease,height .3s ease,border-radius .3s ease,box-shadow .3s ease;
 }
-.title {
+#gbf-panel .title {
   background:#333;padding:6px;text-align:center;cursor:grab;
   border-radius:0 0 4px 4px;
   font-weight:bold;user-select:none;
   /* title 自身的 transform 过渡用于左右收缩动画 */
   transition:color .3s,background .3s,opacity .3s,height .3s,padding .3s,transform .3s ease;
 }
-.title.idle-mode-on{color:#00bfff;background:linear-gradient(135deg,#333,#004466);}
+#gbf-panel .title.idle-mode-on{color:#00bfff;background:linear-gradient(135deg,#333,#004466);}
 
 /* panel-content: 左右用 scaleX，上下用 scaleY，配合 overflow:hidden 实现真实压缩 */
-.panel-content{
+#gbf-panel .panel-content{
   transition:transform .3s ease,opacity .3s;
   padding-top:3px;
   transform-origin:top center; /* 上下压缩时从顶部收缩 */
 }
 
-.tabs{display:flex;gap:4px;background:#1e1e1e;padding:0 3px 3px;}
-.tabs span{flex:1;text-align:center;padding:5px;background:#444;cursor:pointer;border-radius:4px;}
-.tabs span.active{background:#fff;color:#000;}
-.menu{padding:0;}
-.item{display:block;width:100%;box-sizing:border-box;background:#555;margin:0;padding:6px;text-align:center;cursor:pointer;border-radius:0;border-bottom:2px solid #1e1e1e;transition:background .2s;}
-.item:last-child{border-bottom:none;}
-.item:hover{background:#666;}
-.add-btn{background:#2a4a2a;color:#8f8;}
-.add-btn:hover{background:#3a5a3a;}
-.settings{background:#222;padding:6px;}
-.settings:empty{display:none;}
-.row{margin:6px 0;font-size:11px;}
-.row input[type=range]{width:100%;margin-top:3px;}
-.keymap-toggle{display:flex;align-items:center;gap:6px;}
-.keymap-toggle input{margin:0;}
-.km-tag{font-size:10px;color:#9ad;opacity:.9;float:right;}
+#gbf-panel .tabs{display:flex;gap:4px;background:#1e1e1e;padding:0 3px 3px;}
+#gbf-panel .tabs span{flex:1;text-align:center;padding:5px;background:#444;cursor:pointer;border-radius:4px;}
+#gbf-panel .tabs span.active{background:#fff;color:#000;}
+#gbf-panel .menu{padding:0;}
+#gbf-panel .item{display:block;width:100%;box-sizing:border-box;background:#555;margin:0;padding:6px;text-align:center;cursor:pointer;border-radius:0;border-bottom:2px solid #1e1e1e;transition:background .2s;}
+#gbf-panel .item:last-child{border-bottom:none;}
+#gbf-panel .item:hover{background:#666;}
+#gbf-panel .add-btn{background:#2a4a2a;color:#8f8;}
+#gbf-panel .add-btn:hover{background:#3a5a3a;}
+#gbf-panel .settings{background:#222;padding:6px;}
+#gbf-panel .settings:empty{display:none;}
+#gbf-panel .row{margin:6px 0;font-size:11px;}
+#gbf-panel .row input[type=range]{width:100%;margin-top:3px;}
+#gbf-panel .keymap-toggle{display:flex;align-items:center;gap:6px;}
+#gbf-panel .keymap-toggle input{margin:0;}
+#gbf-panel .km-tag{font-size:10px;color:#9ad;opacity:.9;float:right;}
 #gbf-ctx .ctx-item{padding:6px 14px;cursor:pointer;}
 #gbf-ctx .ctx-item:hover{background:#444;}
 #gbf-ctx .ctx-del{color:#f88;}
