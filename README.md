@@ -15,7 +15,9 @@
 - 支持透明度和待机时间调节
 - 支持贴边吸附和自动休眠
 - 休眠后可通过鼠标悬停唤醒
-- 浏览器窗口尺寸变化时，面板会尽量保持在可见边界内`n- 支持锁定面板位置，同时保留侧边吸附和隐藏功能`n- 右键列表标签可以自定义两个列表名称
+- 浏览器窗口尺寸变化时，面板会尽量保持在可见边界内
+- 支持锁定面板位置，同时保留侧边吸附和隐藏功能
+- 右键列表标签可以自定义两个列表名称
 
 ### 安装
 
@@ -55,7 +57,9 @@ This is a Tampermonkey userscript that adds a draggable bookmark panel to the we
 - Opacity and idle timer settings
 - Edge docking and auto-idle mode
 - Wake from idle by hovering the mouse
-- Keeps the panel within visible browser bounds when the viewport changes`n- Position locking prevents accidental dragging while preserving docking and idle hiding`n- Right-click the list tabs to customize both list names
+- Keeps the panel within visible browser bounds when the viewport changes
+- Position locking prevents accidental dragging while preserving docking and idle hiding
+- Right-click the list tabs to customize both list names
 
 ### Installation
 
@@ -95,7 +99,9 @@ You can also open `gbf-web-bookmark-plugin-v7.2.1.user.js`, copy the script into
 - 透明度と待機時間の調整
 - 画面端への吸着と自動待機モード
 - マウスホバーで待機状態から復帰
-- ブラウザサイズ変更時にパネルを表示範囲内へ保つ処理`n- パネル位置のロックに対応し、端への吸着と待機非表示は引き続き使用可能`n- リストタブを右クリックして2つのリスト名を変更可能
+- ブラウザサイズ変更時にパネルを表示範囲内へ保つ処理
+- パネル位置のロックに対応し、端への吸着と待機非表示は引き続き使用可能
+- リストタブを右クリックして2つのリスト名を変更可能
 
 ### インストール
 
