@@ -15,16 +15,16 @@
 - 支持透明度和待机时间调节
 - 支持贴边吸附和自动休眠
 - 休眠后可通过鼠标悬停唤醒
-- 浏览器窗口尺寸变化时，面板会尽量保持在可见边界内
+- 浏览器窗口尺寸变化时，面板会尽量保持在可见边界内`n- 支持锁定面板位置，同时保留侧边吸附和隐藏功能`n- 右键列表标签可以自定义两个列表名称
 
 ### 安装
 
 1. 安装 Tampermonkey / 油猴扩展。
-2. 打开快速安装链接：`https://raw.githubusercontent.com/MoShuangYanQin/gbf-web-bookmark-plugin/main/gbf-web-bookmark-plugin-v7.1.8.user.js`。
+2. 打开快速安装链接：`https://raw.githubusercontent.com/MoShuangYanQin/gbf-web-bookmark-plugin/main/gbf-web-bookmark-plugin-v7.2.1.user.js`。
 3. 在 Tampermonkey / 油猴安装页确认安装。
 4. 刷新 GBF 网页。
 
-也可以打开 `gbf-web-bookmark-plugin-v7.1.8.user.js`，将脚本内容复制到 Tampermonkey 新脚本中保存。
+也可以打开 `gbf-web-bookmark-plugin-v7.2.1.user.js`，将脚本内容复制到 Tampermonkey 新脚本中保存。
 
 ### 使用
 
@@ -55,16 +55,16 @@ This is a Tampermonkey userscript that adds a draggable bookmark panel to the we
 - Opacity and idle timer settings
 - Edge docking and auto-idle mode
 - Wake from idle by hovering the mouse
-- Keeps the panel within visible browser bounds when the viewport changes
+- Keeps the panel within visible browser bounds when the viewport changes`n- Position locking prevents accidental dragging while preserving docking and idle hiding`n- Right-click the list tabs to customize both list names
 
 ### Installation
 
 1. Install the Tampermonkey browser extension.
-2. Open the quick install link: `https://raw.githubusercontent.com/MoShuangYanQin/gbf-web-bookmark-plugin/main/gbf-web-bookmark-plugin-v7.1.8.user.js`.
+2. Open the quick install link: `https://raw.githubusercontent.com/MoShuangYanQin/gbf-web-bookmark-plugin/main/gbf-web-bookmark-plugin-v7.2.1.user.js`.
 3. Confirm installation in Tampermonkey.
 4. Refresh the GBF web page.
 
-You can also open `gbf-web-bookmark-plugin-v7.1.8.user.js`, copy the script into a new Tampermonkey script, and save it.
+You can also open `gbf-web-bookmark-plugin-v7.2.1.user.js`, copy the script into a new Tampermonkey script, and save it.
 
 ### Usage
 
@@ -95,16 +95,16 @@ You can also open `gbf-web-bookmark-plugin-v7.1.8.user.js`, copy the script into
 - 透明度と待機時間の調整
 - 画面端への吸着と自動待機モード
 - マウスホバーで待機状態から復帰
-- ブラウザサイズ変更時にパネルを表示範囲内へ保つ処理
+- ブラウザサイズ変更時にパネルを表示範囲内へ保つ処理`n- パネル位置のロックに対応し、端への吸着と待機非表示は引き続き使用可能`n- リストタブを右クリックして2つのリスト名を変更可能
 
 ### インストール
 
 1. Tampermonkey 拡張機能をインストールします。
-2. クイックインストールリンクを開きます: `https://raw.githubusercontent.com/MoShuangYanQin/gbf-web-bookmark-plugin/main/gbf-web-bookmark-plugin-v7.1.8.user.js`
+2. クイックインストールリンクを開きます: `https://raw.githubusercontent.com/MoShuangYanQin/gbf-web-bookmark-plugin/main/gbf-web-bookmark-plugin-v7.2.1.user.js`
 3. Tampermonkey のインストール画面で確認します。
 4. GBF の Web ページを再読み込みします。
 
-または `gbf-web-bookmark-plugin-v7.1.8.user.js` を開き、スクリプト内容を Tampermonkey の新規スクリプトに貼り付けて保存します。
+または `gbf-web-bookmark-plugin-v7.2.1.user.js` を開き、スクリプト内容を Tampermonkey の新規スクリプトに貼り付けて保存します。
 
 ### 使い方
 
