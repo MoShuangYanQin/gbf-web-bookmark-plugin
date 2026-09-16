@@ -1,5 +1,9 @@
 # Changelog
 
+## v7.2.3
+- Added keyboard-to-left-click mapping using the proven OSU-style mouse event flow.
+- Reorganized repository files so the latest script stays in the root and older scripts live under old_versions/.
+
 ## v7.2.1
 - Added position locking to prevent accidental panel dragging while preserving docking and idle hiding.
 - Added right-click list-tab name customization for both lists.
