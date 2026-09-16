@@ -18,15 +18,21 @@
 - 浏览器窗口尺寸变化时，面板会尽量保持在可见边界内
 - 支持锁定面板位置，同时保留侧边吸附和隐藏功能
 - 右键列表标签可以自定义两个列表名称
+- 支持键盘映射鼠标左键
 
 ### 安装
 
 1. 安装 Tampermonkey / 油猴扩展。
-2. 打开快速安装链接：`https://raw.githubusercontent.com/MoShuangYanQin/gbf-web-bookmark-plugin/main/gbf-web-bookmark-plugin-v7.2.1.user.js`。
+2. 打开快速安装链接：`https://raw.githubusercontent.com/MoShuangYanQin/gbf-web-bookmark-plugin/main/gbf-web-bookmark-plugin-v7.2.3.user.js`。
 3. 在 Tampermonkey / 油猴安装页确认安装。
 4. 刷新 GBF 网页。
 
-也可以打开 `gbf-web-bookmark-plugin-v7.2.1.user.js`，将脚本内容复制到 Tampermonkey 新脚本中保存。
+也可以打开 `gbf-web-bookmark-plugin-v7.2.3.user.js`，将脚本内容复制到 Tampermonkey 新脚本中保存。
+
+### 版本文件
+
+- 最新版本脚本放在仓库主目录。
+- 旧版本脚本放在 old_versions/ 文件夹。
 
 ### 使用
 
@@ -60,15 +66,21 @@ This is a Tampermonkey userscript that adds a draggable bookmark panel to the we
 - Keeps the panel within visible browser bounds when the viewport changes
 - Position locking prevents accidental dragging while preserving docking and idle hiding
 - Right-click the list tabs to customize both list names
+- Keyboard-to-left-click mapping
 
 ### Installation
 
 1. Install the Tampermonkey browser extension.
-2. Open the quick install link: `https://raw.githubusercontent.com/MoShuangYanQin/gbf-web-bookmark-plugin/main/gbf-web-bookmark-plugin-v7.2.1.user.js`.
+2. Open the quick install link: `https://raw.githubusercontent.com/MoShuangYanQin/gbf-web-bookmark-plugin/main/gbf-web-bookmark-plugin-v7.2.3.user.js`.
 3. Confirm installation in Tampermonkey.
 4. Refresh the GBF web page.
 
-You can also open `gbf-web-bookmark-plugin-v7.2.1.user.js`, copy the script into a new Tampermonkey script, and save it.
+You can also open `gbf-web-bookmark-plugin-v7.2.3.user.js`, copy the script into a new Tampermonkey script, and save it.
+
+### Version Files
+
+- The latest userscript is kept in the repository root.
+- Older userscripts are kept in the old_versions/ folder.
 
 ### Usage
 
@@ -102,15 +114,21 @@ You can also open `gbf-web-bookmark-plugin-v7.2.1.user.js`, copy the script into
 - ブラウザサイズ変更時にパネルを表示範囲内へ保つ処理
 - パネル位置のロックに対応し、端への吸着と待機非表示は引き続き使用可能
 - リストタブを右クリックして2つのリスト名を変更可能
+- キーボードで左クリックを割り当て可能
 
 ### インストール
 
 1. Tampermonkey 拡張機能をインストールします。
-2. クイックインストールリンクを開きます: `https://raw.githubusercontent.com/MoShuangYanQin/gbf-web-bookmark-plugin/main/gbf-web-bookmark-plugin-v7.2.1.user.js`
+2. クイックインストールリンクを開きます: `https://raw.githubusercontent.com/MoShuangYanQin/gbf-web-bookmark-plugin/main/gbf-web-bookmark-plugin-v7.2.3.user.js`
 3. Tampermonkey のインストール画面で確認します。
 4. GBF の Web ページを再読み込みします。
 
-または `gbf-web-bookmark-plugin-v7.2.1.user.js` を開き、スクリプト内容を Tampermonkey の新規スクリプトに貼り付けて保存します。
+または `gbf-web-bookmark-plugin-v7.2.3.user.js` を開き、スクリプト内容を Tampermonkey の新規スクリプトに貼り付けて保存します。
+
+### バージョンファイル
+
+- 最新版のスクリプトはリポジトリ直下に置いています。
+- 旧版のスクリプトは old_versions/ フォルダに置いています。
 
 ### 使い方
 
